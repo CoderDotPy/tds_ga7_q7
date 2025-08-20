@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Performance Analysis</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        pre {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#">Employee Analysis</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">Employee Performance Analysis</h1>
+        <p class="text-secondary">Email: 22f3000814@ds.study.iitm.ac.in</p>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Python Code</h5>
+        </div>
+        <div class="card-body">
+            <pre>
+# 22f3000814@ds.study.iitm.ac.in
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+departments = ["IT", "HR", "Finance", "Operations", "Marketing"]
+regions = ["Europe", "North America", "Asia Pacific", "Middle East", "Latin America"]
+
+num_employees = 100
+employee_ids = [f"EMP{str(i+1).zfill(3)}" for i in range(num_employees)]
+department_choices = np.random.choice(departments, size=num_employees)
+region_choices = np.random.choice(regions, size=num_employees)
+performance_scores = np.round(np.random.uniform(60, 100, size=num_employees), 2)
+years_experience = np.random.randint(1, 20, size=num_employees)
+satisfaction_ratings = np.round(np.random.uniform(1, 5, size=num_employees), 1)
+
+df = pd.DataFrame({
+    "employee_id": employee_ids,
+    "department": department_choices,
+    "region": region_choices,
+    "performance_score": performance_scores,
+    "years_experience": years_experience,
+    "satisfaction_rating": satisfaction_ratings
+})
+
+finance_count = df[df["department"] == "Finance"].shape[0]
+print(f"Number of employees in Finance department: {finance_count}")
+
+plt.figure(figsize=(8,6))
+sns.countplot(data=df, x="department", palette="Set2")
+plt.title("Employee Count by Department")
+plt.xlabel("Department")
+plt.ylabel("Number of Employees")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("department_histogram.png", dpi=100)
+plt.show()
+df.to_csv("employee_data.csv", index=False)
+            </pre>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Department Histogram</h5>
+        </div>
+        <div class="card-body text-center">
+            <img src="department_histogram.png" alt="Department Histogram">
+        </div>
+    </div>
+
+    <footer class="text-center text-secondary my-4">
+        &copy; 2025 Employee Performance Dashboard
+    </footer>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
